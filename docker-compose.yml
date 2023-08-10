@@ -1,0 +1,19 @@
+version: "1"
+name: "todo"
+services:
+  database:
+    container_name: database  # Rename the container name
+    restart: always
+    image: mysql:latest  # Use the MySQL Docker image
+    ports:
+      - 3306:3306  # MySQL default port
+    environment:
+      - MYSQL_ROOT_PASSWORD=root  # Set your desired root password here
+      - MYSQL_DATABASE=todo  # Set your desired database name here
+      - MYSQL_USER=root  # Set your desired MySQL username here
+      - MYSQL_PASSWORD=docker  # Set your desired MySQL password here
+    volumes:
+      - database-data:/var/lib/mysql
+
+volumes:
+  database-data:
